@@ -6,4 +6,5 @@ public interface Hello extends java.rmi.Remote
 	public String login(String tk, String mk)throws RemoteException;
 	public void updateUser(String name) throws RemoteException;
 	public void updateChat(String name, String chat) throws RemoteException;
+	public void add(String key, String answer) throws RemoteException;
 }

@@ -17,7 +17,7 @@ import javax.swing.border.EmptyBorder;
 
 public class DangNhap extends JFrame {
 
-	private JPanel contentPane;
+	public static JPanel contentPane;
 
 
 	private JTextField tk;

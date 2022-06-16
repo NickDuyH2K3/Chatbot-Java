@@ -13,6 +13,7 @@ import java.time.LocalDateTime;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
@@ -24,7 +25,7 @@ import javax.swing.text.html.HTMLEditorKit;
 
 public class FrameChat extends JFrame {
 
-	private JPanel contentPane;
+	public static JPanel contentPane;
 	private JTextField textField;
 	
 	/**
@@ -83,6 +84,16 @@ public class FrameChat extends JFrame {
 							
 							appendToPane(textPane, "<div class='left' style='width: 40%; background-color: #555555; color: white; border-radius:10px;'>" + "    "
 									+ s.Chat(textField.getText()) + "<br>" + LocalDateTime.now().getHour() + ":" + LocalDateTime.now().getMinute() + "</div>");
+							if (s.Chat(textField.getText()).equals("Có cc bố m trả lời được :)))"))
+							{
+								int c = JOptionPane.showConfirmDialog(null, "Bạn muốn thêm câu trả lời cho chúng tôi?");
+								if (c==0)
+								{
+									AddFrame add = new AddFrame(s);
+									add.setVisible(true);
+									add.setLocationRelativeTo(null);
+								}
+							}
 							s.updateChat(name, textField.getText());
 						
 						} catch (RemoteException e1) {

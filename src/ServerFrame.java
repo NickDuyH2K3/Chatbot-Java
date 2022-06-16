@@ -7,6 +7,8 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JTextPane;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JButton;
@@ -20,6 +22,7 @@ import java.rmi.RMISecurityManager;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.server.UnicastRemoteObject;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextArea;
 import javax.swing.JScrollPane;
@@ -31,6 +34,7 @@ public class ServerFrame extends JFrame {
 	static JTextArea textArea;
 	static JTextArea Chat;
 	Imple obj = new Imple();
+	static int k=0;
 	/**
 	 * Launch the application.
 	 */
@@ -77,10 +81,10 @@ public class ServerFrame extends JFrame {
 					LocateRegistry.createRegistry(port);
 					UnicastRemoteObject.exportObject(obj, 10);
 					Naming.rebind("//localhost:"+port+"/Hello", obj);
-					System.out.println("Server accpeted");
+					JOptionPane.showMessageDialog(btnNewButton, "Server đã sẵn sàng!");
 				} catch (RemoteException e1) {
 					// TODO Auto-generated catch block
-					e1.printStackTrace();
+					JOptionPane.showInternalMessageDialog(btnNewButton, "ID đã tồn tại!");
 				} catch (MalformedURLException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -97,6 +101,7 @@ public class ServerFrame extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				 try {
 					UnicastRemoteObject.unexportObject(obj, true);
+					JOptionPane.showMessageDialog(btnStop, "Server đã đóng!");
 				} catch (NoSuchObjectException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
