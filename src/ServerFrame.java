@@ -81,7 +81,6 @@ public class ServerFrame extends JFrame {
 					LocateRegistry.createRegistry(port);
 					UnicastRemoteObject.exportObject(obj, 10);
 					Naming.rebind("//localhost:"+port+"/Hello", obj);
-					JOptionPane.showMessageDialog(btnNewButton, "Server đã sẵn sàng!");
 				} catch (RemoteException e1) {
 					// TODO Auto-generated catch block
 					JOptionPane.showInternalMessageDialog(btnNewButton, "ID đã tồn tại!");
@@ -89,7 +88,6 @@ public class ServerFrame extends JFrame {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
-			
 			}
 		});
 		btnNewButton.setFont(new Font("Tw Cen MT Condensed Extra Bold", Font.BOLD, 20));

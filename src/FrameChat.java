@@ -22,6 +22,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.MatteBorder;
 import javax.swing.text.html.HTMLDocument;
 import javax.swing.text.html.HTMLEditorKit;
+import javax.swing.SwingConstants;
 
 public class FrameChat extends JFrame {
 
@@ -39,7 +40,7 @@ public class FrameChat extends JFrame {
 		setUndecorated(true);
 		setFocusTraversalKeysEnabled(false);
 		setFocusTraversalPolicyProvider(true);
-		setBounds(100, 100, 754, 515);
+		setBounds(100, 100, 1057, 619);
 		contentPane = new JPanel();
 		contentPane.setForeground(Color.ORANGE);
 		contentPane.setBackground(new Color(51,51,51));
@@ -47,13 +48,25 @@ public class FrameChat extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				System.exit(0);
+			}
+		});
+		lblNewLabel.setIcon(new ImageIcon("E:\\java-2021-09\\ChatBot\\icons8-close-50.png"));
+		lblNewLabel.setBounds(1007, 11, 40, 30);
+		contentPane.add(lblNewLabel);
+		
 		textField = new JTextField();
-		textField.setBounds(207, 438, 478, 30);
+		textField.setBackground(Color.WHITE);
+		textField.setBounds(598, 547, 401, 30);
 		contentPane.add(textField);
 		textField.setColumns(10);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(207, 84, 521, 341);
+		scrollPane.setBounds(333, 111, 724, 411);
 		contentPane.add(scrollPane);
 		
 		JTextPane textPane = new JTextPane();
@@ -108,21 +121,33 @@ public class FrameChat extends JFrame {
 		
 		sendBtn.setForeground(Color.ORANGE);
 		sendBtn.setBackground(Color.ORANGE);
-		sendBtn.setBounds(698, 438, 40, 30);
+		sendBtn.setBounds(1007, 547, 40, 30);
 		contentPane.add(sendBtn);
 		appendToPane(textPane, "<div class='left' style='width: 40%; background-color: #555555; color: white; border-radius:10px;'>" + "    "
 				+"Chào bạn, cảm ơn bạn đã sử dụng ứng dụng của chúng tôi!" + "<br>" + LocalDateTime.now().getHour() + ":" + LocalDateTime.now().getMinute() + "</div>");
 		
-		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				System.exit(0);
-			}
-		});
-		lblNewLabel.setIcon(new ImageIcon("E:\\java-2021-09\\ChatBot\\icons8-close-50.png"));
-		lblNewLabel.setBounds(688, 11, 50, 23);
-		contentPane.add(lblNewLabel);
+		JLabel lblNewLabel_1 = new JLabel("MeoSimmi");
+		lblNewLabel_1.setForeground(Color.WHITE);
+		lblNewLabel_1.setFont(new Font("Tw Cen MT Condensed", Font.PLAIN, 95));
+		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_1.setBounds(0, 11, 329, 95);
+		contentPane.add(lblNewLabel_1);
+		
+		JLabel lblNewLabel_2 = new JLabel("About US");
+		lblNewLabel_2.setForeground(Color.WHITE);
+		lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblNewLabel_2.setBounds(951, 58, 106, 48);
+		contentPane.add(lblNewLabel_2);
+		
+		JPanel panel = new JPanel();
+		panel.setBounds(0, 105, 1057, 10);
+		contentPane.add(panel);
+		
+		JPanel panel_1 = new JPanel();
+		panel_1.setBackground(Color.LIGHT_GRAY);
+		panel_1.setBounds(598, 546, 449, 31);
+		contentPane.add(panel_1);
+		panel_1.setLayout(null);
 	}
 	private void appendToPane(JTextPane tp, String msg) {
 		HTMLDocument doc = (HTMLDocument) tp.getDocument();
@@ -136,5 +161,4 @@ public class FrameChat extends JFrame {
 			e.printStackTrace();
 		}
 	}
-
 }

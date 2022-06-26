@@ -79,7 +79,7 @@ public class Connect extends JFrame {
 					
 				} catch (MalformedURLException | RemoteException | NotBoundException e1) {
 					// TODO Auto-generated catch block
-					e1.printStackTrace();
+					JOptionPane.showMessageDialog(btnNewButton,"Server không tồn tại!");
 				}
 				dispose();
 			}
